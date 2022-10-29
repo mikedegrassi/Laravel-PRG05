@@ -1,0 +1,14 @@
+.hidden{
+
+    /*color: red;*/
+    /*visibility: hidden;*/
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-container{
+    display: flex;
+}

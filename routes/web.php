@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\MakeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,10 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'show'])->name('home');
-
-Route::get('about', [AboutController::class, 'show'])->name('about');
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\CarController::class, 'index']);
+
+Route::resource('car', 'App\Http\Controllers\CarController');
+
+Route::get('changeStatus', [App\Http\Controllers\CarController::class, 'changeStatus'])->name('changeStatus');
+Route::get('search', [\App\Http\Controllers\CarController::class, 'search'])->name('search');
+Route::get('tagSearch', [\App\Http\Controllers\CarController::class, 'tagSearch'])->name('tagSearch');
+
+Route::resource('userCar', 'App\Http\Controllers\UserCarController');
+

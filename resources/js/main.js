@@ -1,4 +1,4 @@
-import './bootstrap';
+import {forEach} from "lodash";
 
 window.addEventListener('load', init);
 
