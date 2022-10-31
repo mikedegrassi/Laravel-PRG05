@@ -41,7 +41,7 @@ class CarController extends Controller
 
         $car = Car::find($id);
 
-        if (\Auth::id() !== $car->user_id && \Auth::user()->role !== 'admin') {
+        if (\Auth::guest() || \Auth::id() !== $car->user_id && \Auth::user()->role !== 'admin') {
             return view('car.home', compact('melding', 'tags', 'cars', $madeCars));
         }
 

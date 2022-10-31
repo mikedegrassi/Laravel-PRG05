@@ -47,34 +47,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        $(function () {
-            $('#toggle-two').bootstrapToggle({
-                on: 'Enabled',
-                off: 'Disabled'
-            });
-        })
-    </script>
-
-    <script>
-        $('.toggle-class').on('change', function () {
-            let status = $(this).prop('checked') === true ? 1 : 0;
-            let car_id = $(this).data('id');
-
-            $.ajax({
-                type: 'GET',
-                datatype: 'JSON',
-                url: '{{route('changeStatus')}}',
-                data: {
-                    'status': status,
-                    'car_id': car_id
-                },
-                success: function (data) {
-
-                }
-            })
-        })
-    </script>
-@endpush

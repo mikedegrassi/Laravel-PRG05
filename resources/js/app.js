@@ -6,8 +6,9 @@ let modalSelect;
 let modal;
 let numberOptions;
 let serie;
+let toggle;
 
-function init(){
+function init() {
 
     modalSelect = document.querySelector('#audi-type');
     modal = modalSelect.options[modalSelect.selectedIndex]
@@ -15,6 +16,7 @@ function init(){
     numberOptions = document.querySelectorAll('.number');
     serie = document.querySelector('#audi-serie');
 
+    toggle = document.querySelector('#toggle-two')
 
     serie.addEventListener('click', selectionClickHandler);
 
@@ -27,7 +29,7 @@ function selectionClickHandler() {
 
     numberOptions.forEach(options => options.classList.remove("hidden"));
 
-    switch (modal.innerHTML){
+    switch (modal.innerHTML) {
         case 'Q':
             numberOptions[0].classList.add('hidden');
             numberOptions[5].classList.add('hidden');
@@ -87,5 +89,6 @@ function selectionClickHandler() {
     }
 
 }
+
 
 

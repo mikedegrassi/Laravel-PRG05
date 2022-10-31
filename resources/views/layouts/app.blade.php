@@ -46,6 +46,7 @@
                 <ul class="navbar-nav ms-auto">
                     <!-- Authentication Links -->
                     @guest
+                        </form>
                         @if (Route::has('login'))
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -82,16 +83,16 @@
                                 </form>
                             </div>
                         </li>
-
-                        <form action="{{ route('search') }}" type="get">
-                            <div class="input-group">
-                                <input type="search" name="searchQuery" class="form-control rounded"
-                                       placeholder="Search"
-                                       aria-label="Search" aria-describedby="search-addon"/>
-                                <button type="submit" class="btn btn-outline-primary">search</button>
-                            </div>
-                        </form>
                     @endguest
+
+                    <form action="{{ route('search') }}" type="get">
+                        <div class="input-group">
+                            <input type="search" name="searchQuery" class="form-control rounded"
+                                   placeholder="Search"
+                                   aria-label="Search" aria-describedby="search-addon"/>
+                            <button type="submit" class="btn btn-outline-primary">search</button>
+                        </div>
+                    </form>
                 </ul>
             </div>
         </div>

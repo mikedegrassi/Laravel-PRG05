@@ -15,12 +15,43 @@
             <button class="btn btn-default" type="submit">Delete</button>
         </form>
 
-            <input type="checkbox" class="toggle-class" data-toggle="toggle"
-                   data-id="{{$car->id}}" data-on="Enabled" data-off="Disabled"
-                {{$car->status == true ? 'checked' : ''}}>
-            {{--                            <input type="checkbox" id="toggle-two">--}}
+        <input type="checkbox" class="toggle-class" data-toggle="toggle"
+               data-id="{{$car->id}}" data-on="Enabled" data-off="Disabled"
+            {{$car->status === true ? 'checked' : ''}}>
+        {{--                            <input type="checkbox" id="toggle-two">--}}
 
-            <a class="btn btn-default" href="{{route('car.edit', $car->id)}}">edit</a>
+        <a class="btn btn-default" href="{{route('car.edit', $car->id)}}">edit</a>
 
     </div>
+
+    @push('scripts')
+        <script>
+            $(function () {
+                $('#toggle-two').bootstrapToggle({
+                    on: 'Enabled',
+                    off: 'Disabled'
+                });
+            })
+        </script>
+
+        <script>
+            $('.toggle-class').on('change', function () {
+                let status = $(this).prop('checked') === true ? 1 : 0;
+                let car_id = $(this).data('id');
+
+                $.ajax({
+                    type: 'GET',
+                    datatype: 'JSON',
+                    url: '{{route('changeStatus')}}',
+                    data: {
+                        'status': status,
+                        'car_id': car_id
+                    },
+                    success: function (data) {
+
+                    }
+                })
+            })
+        </script>
+    @endpush
 @endforeach
