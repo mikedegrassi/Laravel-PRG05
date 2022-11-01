@@ -38,12 +38,14 @@
             $('.toggle-class').on('change', function () {
                 let status = $(this).prop('checked') === true ? 1 : 0;
                 let car_id = $(this).data('id');
+                let token = document.querySelector('meta[name="csrf-token"]').content;
 
                 $.ajax({
-                    type: 'GET',
-                    datatype: 'JSON',
+                    type: "POST",
+                    datatype: 'json',
                     url: '{{route('changeStatus')}}',
                     data: {
+                        '_token': token,
                         'status': status,
                         'car_id': car_id
                     },

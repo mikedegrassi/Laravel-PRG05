@@ -22,7 +22,7 @@ Route::get('/', [App\Http\Controllers\CarController::class, 'index']);
 
 Route::resource('car', 'App\Http\Controllers\CarController');
 
-Route::get('changeStatus', [App\Http\Controllers\CarController::class, 'changeStatus'])->name('changeStatus');
+Route::post('changeStatus', [App\Http\Controllers\CarController::class, 'changeStatus'])->name('changeStatus');
 Route::get('search', [\App\Http\Controllers\CarController::class, 'search'])->name('search');
 Route::get('tagSearch', [\App\Http\Controllers\CarController::class, 'tagSearch'])->name('tagSearch');
 

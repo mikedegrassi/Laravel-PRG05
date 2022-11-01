@@ -11,7 +11,6 @@ let toggle;
 function init() {
 
     modalSelect = document.querySelector('#audi-type');
-    modal = modalSelect.options[modalSelect.selectedIndex]
 
     numberOptions = document.querySelectorAll('.number');
     serie = document.querySelector('#audi-serie');
