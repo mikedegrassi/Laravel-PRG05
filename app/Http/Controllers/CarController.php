@@ -11,9 +11,7 @@ class CarController extends Controller
 {
     public function __construct()
     {
-//        $this->middleware(['auth','admin'])->except(['index', 'show', 'create']);
-        $this->middleware(['admin'])->only(['destroy', 'changeStatus']);
-        $this->middleware(['admin', 'auth'])->only(['create', 'store', 'update', 'edit']);
+        $this->middleware(['admin', 'auth'])->only(['create', 'store', 'update', 'edit', 'changeStatus', 'destroy']);
 
     }
 
@@ -41,7 +39,7 @@ class CarController extends Controller
 
         $car = Car::find($id);
 
-        if (\Auth::guest() || \Auth::id() !== $car->user_id && \Auth::user()->role !== 'admin') {
+        if (\Auth::guest() || \Auth::id() !== $car->user_id && \Auth::user()->role !== 'admin' && $madeCars < 3) {
             return view('car.home', compact('melding', 'tags', 'cars', $madeCars));
         }
 

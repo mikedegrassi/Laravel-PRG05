@@ -17,7 +17,7 @@
 
         <input type="checkbox" class="toggle-class" data-toggle="toggle"
                data-id="{{$car->id}}" data-on="Enabled" data-off="Disabled"
-            {{$car->status === true ? 'checked' : ''}}>
+            {{$car->status == true ? 'checked' : ''}}>
         {{--                            <input type="checkbox" id="toggle-two">--}}
 
         <a class="btn btn-default" href="{{route('car.edit', $car->id)}}">edit</a>
