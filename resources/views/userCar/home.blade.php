@@ -18,7 +18,6 @@
 
                                 @include('partials.adminCard')
 
-
                         </div>
                     </div>
 

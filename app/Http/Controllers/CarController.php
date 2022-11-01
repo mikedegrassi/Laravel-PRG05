@@ -40,7 +40,7 @@ class CarController extends Controller
         $car = Car::find($id);
 
         if (\Auth::guest() || \Auth::id() !== $car->user_id && \Auth::user()->role !== 'admin' && $madeCars < 3) {
-            return view('car.home', compact('melding', 'tags', 'cars', $madeCars));
+            return view('car.home', compact('melding', 'tags', 'cars'));
         }
 
         return view('car.detail', [
@@ -155,8 +155,12 @@ class CarController extends Controller
     public function changeStatus(Request $request)
     {
         $car = Car::find($request->car_id);
-        $car->status = $request->status;
-        $car->save();
+        if ($car->user_id !== \Auth::id() || \Auth::user()->role !== 'admin'){
+            redirect('car.index');
+        } else {
+            $car->status = $request->status;
+            $car->save();
+        }
     }
 
     public function search()
